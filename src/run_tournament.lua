@@ -1,11 +1,5 @@
 local calculate_match_score = require 'calculate_match_score'
-local always_defect = require 'bots/always_defect'
-local always_cooperate = require 'bots/always_cooperate'
-
-local players = {
-  { name = 'always_cooperate', action = always_cooperate },
-  { name = 'always_defect', action = always_defect }
-}
+local players = require('bots/bots')
 
 local turns = 7
 
