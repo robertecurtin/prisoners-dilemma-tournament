@@ -39,7 +39,7 @@ tit_for_tat v tit_for_tat
   tit_for_tat scores 14, tit_for_tat scores 14
 
 -----Results-----
-always_cooperate scored 28
 always_defect scored 37
 tit_for_tat scored 34
+always_cooperate scored 28
 ```

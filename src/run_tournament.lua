@@ -13,6 +13,8 @@ for _, player_a in ipairs(players) do
   end
 end
 
+table.sort(players, function(a, b) return a.score > b.score end)
+
 print('\n-----Results-----')
 for _, player in ipairs(players) do
   print(player.name .. ' scored ' .. player.score)

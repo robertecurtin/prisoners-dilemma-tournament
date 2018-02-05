@@ -17,13 +17,43 @@ describe('calculate_match_score', function()
     return prev_move and prev_move or 'defect'
   end
 
-  it('should process initial moves', function()
+  it('should process both cooperating', function()
+    local turns = 1
+    local actual_score = calculate_match_score(
+      turns,
+      always_cooperate,
+      always_cooperate)
+    expected = { a = 2, b = 2 }
+    assert.are.same(expected, actual_score)
+  end)
+
+  it('should process both defecting', function()
+    local turns = 1
+    local actual_score = calculate_match_score(
+      turns,
+      always_defect,
+      always_defect)
+    expected = { a = 1, b = 1 }
+    assert.are.same(expected, actual_score)
+  end)
+
+  it('should process player A defecting', function()
+    local turns = 1
+    local actual_score = calculate_match_score(
+      turns,
+      always_defect,
+      always_cooperate)
+    expected = { a = 3, b = 0 }
+    assert.are.same(expected, actual_score)
+  end)
+
+  it('should process player B defecting', function()
     local turns = 1
     local actual_score = calculate_match_score(
       turns,
       always_cooperate,
       always_defect)
-    expected = { A = 0, B = 3 }
+    expected = { a = 0, b = 3 }
     assert.are.same(expected, actual_score)
   end)
 
@@ -33,7 +63,7 @@ describe('calculate_match_score', function()
       turns,
       always_cooperate,
       always_defect)
-    expected = { A = 0, B = 6 }
+    expected = { a = 0, b = 6 }
     assert.are.same(expected, actual_score)
   end)
 
@@ -43,7 +73,7 @@ describe('calculate_match_score', function()
       turns,
       tit_for_tat,
       tit_for_tat_initially_defect)
-    expected = { A = 3, B = 3 }
+    expected = { a = 3, b = 3 }
     assert.are.same(expected, actual_score)
   end)
 end)
